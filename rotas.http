@@ -11,15 +11,18 @@ Content-Type: application/json
 GET http://localhost:3000/books HTTP/1.1 
 
 ### READ A BOOK
-GET http://localhost:3000/books/1 
+GET http://localhost:3000/books/654bc708dc526b5d51cb2cc0
 
 ### UPDATE BOOK
-PUT http://localhost:3000/books/1
+PUT http://localhost:3000/books/654bc708dc526b5d51cb2cc0
 Content-Type:  application/json
 
 {
-    "title": "New title"
+    "title": "Harry Potter - e a pedra filosofal",
+    "pages": 200,
+    "price": 20,
+    "editor": "Univas"
 }
 
 ### DELETE BOOK
-DELETE http://localhost:3000/books/1
+DELETE http://localhost:3000/books/654bc708dc526b5d51cb2cc0

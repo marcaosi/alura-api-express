@@ -1,8 +1,6 @@
 import express from 'express'
 import dbCon from './config/dbConnect.js'
-
-import Book from './models/Book.js'
-
+import routes from './routes/index.js'
 const con = await dbCon()
 
 con.on('error', (err) => {
@@ -30,33 +28,12 @@ function searchBook(id){
 
 const app = express()
 
+routes(app)
+
 app.use(express.json())
 
 app.get("/", (req, res) => {
     res.status(200).send("NodeJS running")
-})
-
-app.get("/books", async (req, res) => {
-    const booksList = await Book.find({})
-    res.status(200).json(booksList)
-})
-
-app.get("/books/:id", (req, res) => {
-    const index = searchBook(req.params.id)
-
-    res.status(200).json(books[index])
-})
-
-app.post("/books", (req, res) => {
-    books.push(req.body)
-    res.status(201).send("Book added")
-})
-
-app.put("/books/:id", (req, res) => {
-    const index = searchBook(req.params.id)
-
-    books[index].title = req.body.title
-    res.status(200).send(books)
 })
 
 app.delete("/books/:id", (req, res) => {
